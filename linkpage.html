@@ -1,0 +1,180 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!-- Google Analytics -->
+    
+
+    
+<!-- End of Google Analytics -->
+
+<!-- Facebook Pixel Code -->
+    
+        <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', ''); // Insert your pixel ID here.
+            fbq('track', 'UniqodeQRScans');
+            var my_event_type = "";
+            
+                fbq('track', my_event_type);
+            
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=&ev=UniqodeQRScans&noscript=1"
+        /></noscript>
+    
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+
+<!-- Google Re-marketing Code -->
+    
+        <!-- Global site tag (gtag.js) - Google Ads:  -->
+        
+            <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-"></script>
+        
+        <script>
+          const googleId = ""  
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          if(googleId.startsWith('AW-')){
+            gtag('config', '');
+          } else {
+              gtag('config', 'AW-');
+          }
+        </script>
+    
+<!-- DO NOT MODIFY -->
+<!-- End Google Re-marketing Code -->
+
+
+
+
+
+<!-- SUPPORT FOR PIXEL & ADWORDS FOR LINKPAGE -->
+    
+
+    
+<!-- SUPPORT FOR PIXEL & ADWORDS FOR LINKPAGE -->
+
+      <script>
+    async function redirectToPage() {
+        const redirectUrl = "";
+        
+        
+
+        window.location.replace(redirectUrl);
+    }
+
+    let showAdsTime = 0;
+</script>
+
+
+
+
+    
+
+    <title></title>
+    
+      <script src="https://d37kyygnt8on38.cloudfront.net/development/uniqode-insights.browser-v0.0.10-alpha.js" integrity="sha256-3GlUizSpSGC30B4tKFRv256JYWFxc48zLH79M3hTth8=" crossorigin="anonymous"></script>
+
+<script>
+    class OrganizationAttributeEnhancement {
+        name = 'OrganizationAttributeEnhancement';
+        pluginType = 'pipeline';
+        category = 'enrichment';
+        version = '0.0.1';
+        isActive = false;
+        logger;
+        organization;
+
+        initialize(context = {}) {
+            this.context = context;
+            this.logger = context.logger;
+            this.organization = context.pluginConfig?.organization;
+            console.log(`${this.name} plugin initialized with organization:`, this.organization);
+        }
+
+        processEvent(event) {
+            if (!this.isActive) {
+                this.logger?.warn(`${this.name} plugin is not active.`);
+                return event;
+            }
+            if(this.organization != undefined) {
+                event.eventProperties['organization'] = this.organization;
+            } else {
+                this.logger?.warn(`${this.name} plugin: organization is not set.`);
+            }
+            return event;
+        }
+
+        start() {
+            this.isActive = true;
+            this.logger?.info(`${this.name} plugin started.`);
+        }
+
+        stop() {
+            this.isActive = false;
+            this.context?.logger.debug('Stopped - no longer processing events.');
+        }
+
+        destroy() {
+            this.organization = undefined; // Clear the stored ID from the instance
+        }
+
+    }
+</script>
+
+<script>
+    try{
+        
+            UniqodeInsights.addPlugin(new OrganizationAttributeEnhancement());
+        
+        window.UniqodeInsights.init("cl-af3e9105fc8e08c02572dc34c9b2ab2a", {
+                apiEndpoint: "https://ptptst4ieg.execute-api.us-east-1.amazonaws.com/prod/track",
+                // Add other configurations as needed
+                transportConfig: [{
+                    apiEndpoint: "https://ptptst4ieg.execute-api.us-east-1.amazonaws.com/prod/track",
+
+                    // Use the batchConfig from insights if available, otherwise use default values
+                    
+                        batchConfig: {'batchSize': 2, 'batchInterval': 2, 'maxBatchSize': 1000},
+                    
+                    requestTimeout: 4000,
+                }],
+                pluginConfig: {
+                    
+                        OrganizationAttributeEnhancement: {
+                            organization: 766529,
+                        },
+                    
+                }
+            })
+    } catch (error) {
+        console.error("Error initializing Uniqode Insights:", error);
+    }
+</script>
+    
+    <style>
+        body, html
+        {
+            margin: 0; padding: 0; height: 100%; overflow: hidden;
+        }
+
+        .content
+        {
+            position:absolute; left: 0; right: 0; bottom: 0; top: 0
+        }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+        <iframe id="linkpage-iframe" width="100%" height="100%" src="https://linkpages.pro/QlRL8q?preview=true"></iframe>
+        </div>
+  
+</body></html>
