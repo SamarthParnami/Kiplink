@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://d37kyygnt8on38.cloudfront.net/development/uniqode-insights.browser-v0.0.13-alpha.js" integrity="sha384-wTlLFk0onvlaXAPwsJwGdO3XK/6nkxjNd/aWt8LYuQO1LUE3CYvLNFJqZ+Fsy9Sf" crossorigin="anonymous"></script>
+    <script>
+        window.UniqodeInsights.init("cl_6fde420f-9cad-4ec0-a722-75a6360a4024", {
+            apiEndpoint: "https://qme7fe1ic8.execute-api.us-east-1.amazonaws.com/qa/track",
+            transportConfig: [{
+                apiEndpoint: "https://qme7fe1ic8.execute-api.us-east-1.amazonaws.com/qa/track",
+                batchConfig: { batchSize: 2, batchInterval: 2, maxBatchSize: 1000 },
+                requestTimeout: 4000
+            }],
+            pluginConfig: {
+                DeviceIdentifyPlugin: { localStorageKeyName: "insightsDeviceId" },
+                AutoTrackPlugin: { pageViews: true, forms: true, clicks: true, scrolling: true }
+            }
+        });
+
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amplitude</title>
