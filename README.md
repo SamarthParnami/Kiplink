@@ -12,4 +12,4 @@ Simple e-commerce site with 3 tea pot products. Features product listing, detail
 
 ## Deployment
 Just push to main to deploy.
-https://sourobrata.github.io
+samarth-parnami.github.io/Kiplink/
