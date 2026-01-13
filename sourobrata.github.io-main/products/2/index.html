@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classic Ceramic Pot | TeaPots</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <script src="../../insights.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="../../index.html" class="logo">TeaPots</a>
+      <nav class="nav">
+        <a href="../index.html">All Products</a>
+      </nav>
+      <div class="header-icons">
+        <span class="cart-icon">🛒 <span id="cartCount">0</span></span>
+        <span class="wishlist-icon">♥ <span id="wishlistCount">0</span></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="product-card">
+      <img
+        id="productImage"
+        src=""
+        alt="Product Image"
+        class="product-image"
+      />
+
+      <h1 class="product-title" id="productTitle"></h1>
+
+      <p class="product-description" id="productDescription"></p>
+
+      <div class="price" id="productPrice"></div>
+
+      <!-- Quantity Selector -->
+      <div class="quantity-container">
+        <label for="quantity">Quantity:</label>
+        <select id="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button id="addToCartBtn" class="btn btn-primary">
+          Add to Cart
+        </button>
+        <button id="wishlistBtn" class="btn btn-wishlist">
+          ♡ Save to Wishlist
+        </button>
+      </div>
+
+      <p id="cartMessage" class="cart-message"></p>
+      <p id="wishlistMessage" class="wishlist-message"></p>
+    </div>
+  </main>
+
+  <script src="../../data.js"></script>
+  <script>
+    const PRODUCT_ID = 2;
+    const product = getProductById(PRODUCT_ID);
+
+    // Populate product details
+    document.getElementById('productImage').src = product.image;
+    document.getElementById('productImage').alt = product.name;
+    document.getElementById('productTitle').textContent = product.name;
+    document.getElementById('productDescription').textContent = product.description;
+    document.getElementById('productPrice').textContent = formatPrice(product.price);
+
+    // Update header counts
+    function updateHeaderCounts() {
+      document.getElementById('cartCount').textContent = getCartCount();
+      document.getElementById('wishlistCount').textContent = getWishlist().length;
+    }
+
+    // Update wishlist button state
+    function updateWishlistButton() {
+      const btn = document.getElementById('wishlistBtn');
+      const inWishlist = isInWishlist(PRODUCT_ID);
+      
+      btn.textContent = inWishlist ? '♥ Saved to Wishlist' : '♡ Save to Wishlist';
+      btn.classList.toggle('active', inWishlist);
+    }
+
+    // Add to cart
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    const quantitySelect = document.getElementById('quantity');
+    const cartMessage = document.getElementById('cartMessage');
+
+    addToCartBtn.addEventListener('click', () => {
+      const quantity = parseInt(quantitySelect.value, 10);
+      addToCart(PRODUCT_ID, quantity);
+      updateHeaderCounts();
+      cartMessage.textContent = `Added ${quantity} item(s) to cart. Total items: ${getCartCount()}`;
+    });
+
+    // Wishlist toggle
+    const wishlistBtn = document.getElementById('wishlistBtn');
+    const wishlistMessage = document.getElementById('wishlistMessage');
+
+    wishlistBtn.addEventListener('click', () => {
+      toggleWishlist(PRODUCT_ID);
+      updateWishlistButton();
+      updateHeaderCounts();
+      
+      const inWishlist = isInWishlist(PRODUCT_ID);
+      wishlistMessage.textContent = inWishlist 
+        ? 'Item added to your wishlist!' 
+        : 'Item removed from wishlist.';
+    });
+
+    // Initialize
+    updateHeaderCounts();
+    updateWishlistButton();
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        (function() {
+            // Create a URLSearchParams object from the current page's query string
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Get the value of the 'url' parameter
+            const redirectUrl = urlParams.get('url');
+
+            // Check if the 'url' parameter exists and has a value
+            if (redirectUrl) {
+                try {
+                    // For security, ensure the URL is properly formed before redirecting
+                    const validUrl = new URL(decodeURIComponent(redirectUrl));
+                    window.location.href = validUrl.href;
+                } catch (e) {
+                    document.body.innerHTML = '<h1>❌ Error</h1><p>The provided URL is invalid.</p>';
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+</body>

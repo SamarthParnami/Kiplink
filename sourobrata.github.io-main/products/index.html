@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Products | Tea Pots Collection</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="../insights.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="../index.html" class="logo">TeaPots</a>
+      <nav class="nav">
+        <a href="./index.html">Products</a>
+      </nav>
+      <div class="header-icons">
+        <span class="cart-icon">🛒 <span id="cartCount">0</span></span>
+        <span class="wishlist-icon">♥ <span id="wishlistCount">0</span></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <h1 class="page-title">Our Collection</h1>
+    <p class="page-subtitle">Discover our handpicked selection of premium tea pots</p>
+    
+    <div class="products-grid" id="productsGrid">
+      <!-- Products will be loaded here by JavaScript -->
+    </div>
+  </main>
+
+  <script src="../data.js"></script>
+  <script>
+    // Update header counts
+    function updateHeaderCounts() {
+      document.getElementById('cartCount').textContent = getCartCount();
+      document.getElementById('wishlistCount').textContent = getWishlist().length;
+    }
+
+    // Render products - clicking card goes to detail page
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      
+      grid.innerHTML = products.map(product => {
+        return `
+          <a href="./${product.id}/index.html" class="product-card-list product-card-clickable">
+            <img src="${product.image}" alt="${product.name}" class="product-image" />
+            <h2 class="product-title">${product.name}</h2>
+            <p class="product-description">${product.description}</p>
+            <div class="price">${formatPrice(product.price)}</div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    // Initialize
+    renderProducts();
+    updateHeaderCounts();
+  </script>
+</body>
+</html>
